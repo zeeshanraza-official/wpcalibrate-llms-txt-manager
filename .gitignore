@@ -10,17 +10,25 @@ Thumbs.db
 *.sublime-project
 *.sublime-workspace
 
-# Temporary & Scratch files
-scripts/scratch*
-scripts/other*
-scripts/find*
-
-# Antigravity & Agent configs
+# AI instructions, planning, and memory
 .agents/
 .cursor/
 .claude/
+CLAUDE.md
+AGENTS.md
+PROJECT_MEMORY.md
+TROUBLESHOOTING.md
+CHANGELOG_AI.md
+TODO_AI.md
+*_AI.md
 
-# Build archives
+# Development, scripts, and tests
+/scripts/
+/tests/
+
+# Build artifacts and archives
+/wpcalibrate-llms-txt-manager/
 *.zip
+
 
 
