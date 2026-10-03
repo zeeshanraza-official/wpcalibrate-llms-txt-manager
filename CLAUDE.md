@@ -56,6 +56,7 @@
 - `scripts/build-plugin-folder.ps1`: Automated packaging script that removes the old `wpcalibrate-llms-txt-manager/` folder and `wpcalibrate-llms-txt-manager.zip`, creates a fresh build directory with all production assets, and generates an updated `.zip` distribution archive.
 - `scripts/ftp-config.json`: Host, credentials, and remote plugin path (`wp-content/plugins/wpcalibrate-llms-txt-manager`).
 - `scripts/ftp-deploy.ps1`: Automated recursive FTP deployment script that triggers `build-plugin-folder.ps1` first, ensures remote directory hierarchy, and uploads with connection retry handling.
+- `scripts/github-publish.ps1`: Creates the public GitHub repository via GitHub CLI (`gh`), pushes the `main` branch, and publishes release `v1.0.0` with the distribution `.zip` archive attached.
 - Rebuild Plugin Folder:
   ```powershell
   powershell -ExecutionPolicy Bypass -File scripts\build-plugin-folder.ps1
@@ -64,5 +65,10 @@
   ```powershell
   powershell -ExecutionPolicy Bypass -File scripts\ftp-deploy.ps1
   ```
+- Publish to GitHub:
+  ```powershell
+  powershell -ExecutionPolicy Bypass -File scripts\github-publish.ps1
+  ```
+
 
 
