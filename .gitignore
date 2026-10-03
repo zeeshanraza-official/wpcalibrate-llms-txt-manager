@@ -1,0 +1,21 @@
+# Environment and Credentials
+scripts/ftp-config.json
+*.log
+
+# Operating System & IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Temporary & Scratch files
+scripts/scratch*
+scripts/other*
+scripts/find*
+
+# Antigravity & Agent configs
+.agents/
+.cursor/
+.claude/
