@@ -92,7 +92,11 @@ class Plugin {
 			$this->admin->register();
 
 			// GitHub in-dashboard auto-updater.
-			new GitHub_Updater();
+			try {
+				new GitHub_Updater();
+			} catch ( \Throwable $e ) {
+				error_log( 'WPCalibrate LLMs.txt Manager GitHub Updater error: ' . $e->getMessage() );
+			}
 		}
 	}
 

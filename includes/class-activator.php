@@ -25,30 +25,34 @@ class Activator {
 	 * Run activation tasks.
 	 */
 	public static function activate(): void {
-		// 1. Initialize options if not present.
-		if ( false === get_option( Options::OPTION_SETTINGS ) ) {
-			add_option( Options::OPTION_SETTINGS, Options::get_default_settings(), '', true );
+		try {
+			// 1. Initialize options if not present.
+			if ( false === get_option( Options::OPTION_SETTINGS ) ) {
+				add_option( Options::OPTION_SETTINGS, Options::get_default_settings(), '', true );
+			}
+
+			if ( false === get_option( Options::OPTION_SCHEMA_VERSION ) ) {
+				add_option( Options::OPTION_SCHEMA_VERSION, WPCLLM_SCHEMA_VERSION, '', true );
+			}
+
+			if ( false === get_option( Options::OPTION_DRAFT ) ) {
+				Options::reset_draft();
+			}
+
+			if ( false === get_option( 'wpcllm_installed_at' ) ) {
+				add_option( 'wpcllm_installed_at', time(), '', false );
+			}
+
+			// 2. Register rewrite rules and flush once.
+			$router = new Router();
+			$router->add_rewrite_rules();
+			flush_rewrite_rules( false );
+
+			// 3. Inspect physical file status (cached).
+			$detector = new Physical_File_Detector();
+			$detector->detect( true );
+		} catch ( \Throwable $e ) {
+			error_log( 'WPCalibrate Activator::activate failed: ' . $e->getMessage() );
 		}
-
-		if ( false === get_option( Options::OPTION_SCHEMA_VERSION ) ) {
-			add_option( Options::OPTION_SCHEMA_VERSION, WPCLLM_SCHEMA_VERSION, '', true );
-		}
-
-		if ( false === get_option( Options::OPTION_DRAFT ) ) {
-			Options::reset_draft();
-		}
-
-		if ( false === get_option( 'wpcllm_installed_at' ) ) {
-			add_option( 'wpcllm_installed_at', time(), '', false );
-		}
-
-		// 2. Register rewrite rules and flush once.
-		$router = new Router();
-		$router->add_rewrite_rules();
-		flush_rewrite_rules( false );
-
-		// 3. Inspect physical file status (cached).
-		$detector = new Physical_File_Detector();
-		$detector->detect( true );
 	}
 }

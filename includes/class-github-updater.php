@@ -241,3 +241,9 @@ class GitHub_Updater {
 		return $result;
 	}
 }
+
+// Ensure both GitHub_Updater and Github_Updater resolve identically.
+if ( ! class_exists( __NAMESPACE__ . '\\Github_Updater', false ) ) {
+	class_alias( __NAMESPACE__ . '\\GitHub_Updater', __NAMESPACE__ . '\\Github_Updater' );
+}
+

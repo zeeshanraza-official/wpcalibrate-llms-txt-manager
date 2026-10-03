@@ -87,30 +87,41 @@ spl_autoload_register(
 		$class_name     = array_pop( $parts );
 
 		// Convert Class_Name or ClassName to class-name.
-		$dashed    = str_replace( '_', '-', $class_name );
-		$dashed    = (string) preg_replace( '/([a-z])([A-Z])/', '$1-$2', $dashed );
-		$file_name = 'class-' . strtolower( $dashed ) . '.php';
+		$dashed     = str_replace( '_', '-', $class_name );
+		$dashed     = (string) preg_replace( '/([a-z])([A-Z])/', '$1-$2', $dashed );
+		$file_name  = 'class-' . strtolower( $dashed ) . '.php';
+		$file_names = [ $file_name ];
+
+		// Also check normalized names without extra hyphens (e.g. GitHub_Updater -> class-github-updater.php).
+		$alt_file_name = str_replace( 'git-hub', 'github', $file_name );
+		if ( $alt_file_name !== $file_name ) {
+			$file_names[] = $alt_file_name;
+		}
 
 		// If namespace parts exist, map directly to directory (e.g. Includes -> includes/, Admin -> admin/).
 		if ( ! empty( $parts ) ) {
 			$sub_dir = strtolower( implode( DIRECTORY_SEPARATOR, $parts ) ) . DIRECTORY_SEPARATOR;
-			$path    = WPCLLM_PLUGIN_DIR . $sub_dir . $file_name;
-			if ( file_exists( $path ) ) {
-				require_once $path;
-				return;
+			foreach ( $file_names as $fname ) {
+				$path = WPCLLM_PLUGIN_DIR . $sub_dir . $fname;
+				if ( file_exists( $path ) ) {
+					require_once $path;
+					return;
+				}
 			}
 		}
 
 		// Fallback check in includes/ and admin/.
-		$paths = [
-			WPCLLM_PLUGIN_DIR . 'includes' . DIRECTORY_SEPARATOR . $file_name,
-			WPCLLM_PLUGIN_DIR . 'admin' . DIRECTORY_SEPARATOR . $file_name,
-		];
+		foreach ( $file_names as $fname ) {
+			$paths = [
+				WPCLLM_PLUGIN_DIR . 'includes' . DIRECTORY_SEPARATOR . $fname,
+				WPCLLM_PLUGIN_DIR . 'admin' . DIRECTORY_SEPARATOR . $fname,
+			];
 
-		foreach ( $paths as $path ) {
-			if ( file_exists( $path ) ) {
-				require_once $path;
-				return;
+			foreach ( $paths as $path ) {
+				if ( file_exists( $path ) ) {
+					require_once $path;
+					return;
+				}
 			}
 		}
 	}
@@ -122,14 +133,22 @@ spl_autoload_register(
 register_activation_hook(
 	__FILE__,
 	static function (): void {
-		Includes\Activator::activate();
+		try {
+			Includes\Activator::activate();
+		} catch ( \Throwable $e ) {
+			error_log( 'WPCalibrate LLMs.txt Manager activation error: ' . $e->getMessage() );
+		}
 	}
 );
 
 register_deactivation_hook(
 	__FILE__,
 	static function (): void {
-		Includes\Deactivator::deactivate();
+		try {
+			Includes\Deactivator::deactivate();
+		} catch ( \Throwable $e ) {
+			error_log( 'WPCalibrate LLMs.txt Manager deactivation error: ' . $e->getMessage() );
+		}
 	}
 );
 
