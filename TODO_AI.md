@@ -24,7 +24,14 @@
   - [x] Guard asset enqueuing in `class-admin.php::is_plugin_screen()` with `Menu::is_current_page()`.
 - [x] Run automated build pipeline to delete old plugin folder and recreate fresh package + zip.
 - [x] Deploy updated plugin via automated FTP deployment script to remote server.
+- [x] Install Git and GitHub CLI (`gh`) and authenticate with user GitHub account (`zeeshanraza-official`).
+- [x] Build and test in-dashboard GitHub updater (`includes/class-github-updater.php`) with 6h caching and zipball fallback.
+- [x] Complete GitHub repository documentation with comprehensive `README.md` (About, Features, Architecture, Documentation, and Changelog).
+- [x] Initialize Git repository, configure .gitignore, commit all production files, and create public repository on GitHub.
+- [x] Push `main` branch to `https://github.com/zeeshanraza-official/wpcalibrate-llms-txt-manager`.
+- [x] Publish GitHub Release `v1.0.0` with `wpcalibrate-llms-txt-manager.zip` attached for 1-click in-dashboard updates.
 - [x] Update documentation (`CLAUDE.md`, `PROJECT_MEMORY.md`, `TROUBLESHOOTING.md`, `CHANGELOG_AI.md`, `TODO_AI.md`).
+
 
 
 
