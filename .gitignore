@@ -26,9 +26,9 @@ TODO_AI.md
 /scripts/
 /tests/
 
-# Build artifacts and archives
-/wpcalibrate-llms-txt-manager/
+# Build archives
 *.zip
+
 
 
 
