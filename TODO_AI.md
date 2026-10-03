@@ -36,7 +36,9 @@
 - [x] Ensure cross-platform forward slash path separators in ZIP archive for seamless WordPress/Linux extraction.
 - [x] Inspect and verify ZIP contents programmatically via `scripts/verify-package.ps1` (100% PASS).
 - [x] Verify deployment and activation on remote testing server via automated FTP synchronization (38/38 files, 0 failures).
+- [x] Push latest clean plugin folder (`wpcalibrate-llms-txt-manager/`) to GitHub repository (`https://github.com/zeeshanraza-official/wpcalibrate-llms-txt-manager`).
 - [x] Update documentation (`CLAUDE.md`, `PROJECT_MEMORY.md`, `TROUBLESHOOTING.md`, `CHANGELOG_AI.md`, `TODO_AI.md`).
+
 
 
 
