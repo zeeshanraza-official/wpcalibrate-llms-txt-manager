@@ -43,7 +43,13 @@
   - Identified conflict when `wpcalibrate-tiered-pricing-for-woocommerce` and `wpcalibrate-llms-txt-manager` coexist under the shared `wpcalibrate` parent menu: sibling plugin registered `wpcalibrate` at priority 9, causing all tab links pointing to `admin.php?page=wpcalibrate` to unexpectedly route to Tiered Pricing.
   - Added `Menu::get_admin_url()` method ensuring all internal links, tabs, Quick Actions, and export URLs strictly anchor to `admin.php?page=wpcalibrate-llms-txt-manager`.
   - Added explicit form `action` targets in `builder.php`, `raw-editor.php`, `import.php`, `dashboard.php`, and `settings.php` to prevent form submissions from crossing plugin boundaries.
-  - Hardened `class-admin.php::is_plugin_screen()` with `Menu::is_current_page()` and `Menu::owns_parent()` guards to eliminate script/style leakage onto sibling WPCalibrate screens.
+- **Production Distribution Packaging & Verification (`scripts/build-plugin-folder.ps1`, `scripts/verify-package.ps1`)**:
+  - Rebuilt production packaging to strictly isolate production code into a local `wpcalibrate-llms-txt-manager/` folder inside the project root.
+  - Enforced complete exclusion of all AI instructions, memory, planning, troubleshooting, and dev artifacts (`.agents`, `.claude`, `AGENTS.md`, `CLAUDE.md`, `PROJECT_MEMORY.md`, `TROUBLESHOOTING.md`, `CHANGELOG_AI.md`, `TODO_AI.md`, `tests/`, `scripts/`, `.git`, `.vscode`, `ftp-config.json`, secrets).
+  - Configured installable archive generation using POSIX standard archive creation (`tar -a -c -f`) ensuring all ZIP entries use canonical forward slashes (`/`), resolving Windows `Compress-Archive` backslash extraction issues on Linux WordPress hosts.
+  - Generated `wpcalibrate-llms-txt-manager-1.0.0.zip` in the parent directory (`d:\2-FDrive\1- Services\4- Plugins Development\`) and `wpcalibrate-llms-txt-manager.zip` in the project root.
+  - Developed automated verification suite (`scripts/verify-package.ps1`) validating that the archive contains exactly one top-level `wpcalibrate-llms-txt-manager/` container, 0 disallowed files, and 100% of required runtime code, templates, assets, branding, and metadata files.
+
 
 
 

@@ -30,7 +30,14 @@
 - [x] Initialize Git repository, configure .gitignore, commit all production files, and create public repository on GitHub.
 - [x] Push `main` branch to `https://github.com/zeeshanraza-official/wpcalibrate-llms-txt-manager`.
 - [x] Publish GitHub Release `v1.0.0` with `wpcalibrate-llms-txt-manager.zip` attached for 1-click in-dashboard updates.
+- [x] Package production build in `wpcalibrate-llms-txt-manager/` folder inside project root.
+- [x] Exclude all AI instructions, memory, planning, troubleshooting, dev files, tests, scripts, credentials, and repository metadata.
+- [x] Generate installable ZIP `wpcalibrate-llms-txt-manager-1.0.0.zip` in parent directory (`D:\2-FDrive\1- Services\4- Plugins Development`).
+- [x] Ensure cross-platform forward slash path separators in ZIP archive for seamless WordPress/Linux extraction.
+- [x] Inspect and verify ZIP contents programmatically via `scripts/verify-package.ps1` (100% PASS).
+- [x] Verify deployment and activation on remote testing server via automated FTP synchronization (38/38 files, 0 failures).
 - [x] Update documentation (`CLAUDE.md`, `PROJECT_MEMORY.md`, `TROUBLESHOOTING.md`, `CHANGELOG_AI.md`, `TODO_AI.md`).
+
 
 
 

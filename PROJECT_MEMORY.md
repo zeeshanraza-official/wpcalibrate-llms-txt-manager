@@ -35,6 +35,11 @@
    - In environments with multiple WPCalibrate plugins (e.g. `wpcalibrate-tiered-pricing-for-woocommerce`), the top-level `wpcalibrate` slug may be owned by a sibling plugin.
    - All internal tabs, actions, form targets, and export URLs must strictly anchor to `Menu::SUBMENU_SLUG` (`wpcalibrate-llms-txt-manager`) via `Menu::get_admin_url()`.
    - `Menu::is_current_page()` guarantees assets and action handlers never conflict with sibling screens.
+9. **Strict Production Distribution & Packaging Standards**:
+   - Packaged folder `wpcalibrate-llms-txt-manager/` must reside directly inside the project root, containing only production-required runtime code, assets, branding, and standard distribution files (`README.md`, `readme.txt`, `LICENSE`, `uninstall.php`).
+   - Strict exclusions: AI instructions, memory, planning, troubleshooting, and dev artifacts (`.agents`, `.claude`, `AGENTS.md`, `CLAUDE.md`, `PROJECT_MEMORY.md`, `TROUBLESHOOTING.md`, `CHANGELOG_AI.md`, `TODO_AI.md`, `scripts/`, `tests/`, `.git`, `.vscode`, `ftp-config.json`, secrets).
+   - Parent directory installable archive `wpcalibrate-llms-txt-manager-1.0.0.zip` must contain exactly one top-level directory `wpcalibrate-llms-txt-manager/` with standard forward slash (`/`) path separators for 100% Linux/WordPress compatibility.
+
 
 
 

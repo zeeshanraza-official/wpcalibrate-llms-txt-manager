@@ -39,3 +39,7 @@
     2. Updated all navigation tabs, quick action links, export URLs, and form actions across `layout.php`, `dashboard.php`, `builder.php`, `raw-editor.php`, `import.php`, and `settings.php` to use `Menu::get_admin_url()`.
     3. Added `Menu::is_current_page()` and `Menu::owns_parent()` checks to `class-admin.php::is_plugin_screen()`, preventing script and style collision on sibling WPCalibrate admin screens.
 
+### 8. Plugin Zip Extraction Failing or Creating Flat Files on Linux/WordPress
+- **Root Cause**: PowerShell's default `Compress-Archive` cmdlet on Windows uses backward slashes (`\`) for internal ZIP entry paths. When uploaded to a Linux server or extracted by standard unzippers, paths like `wpcalibrate-llms-txt-manager\admin\class-admin.php` are treated as literal filenames instead of directory hierarchies, breaking plugin activation.
+- **Fix**: The build script (`scripts/build-plugin-folder.ps1`) uses POSIX-standard `tar -a -c -f` which stores entries with standard forward slashes (`/`), ensuring seamless extraction on both Windows, macOS, and Linux WordPress hosting environments.
+

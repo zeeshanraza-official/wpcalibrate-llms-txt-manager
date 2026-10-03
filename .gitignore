@@ -19,3 +19,8 @@ scripts/find*
 .agents/
 .cursor/
 .claude/
+
+# Build artifacts & packages
+/wpcalibrate-llms-txt-manager/
+*.zip
+
