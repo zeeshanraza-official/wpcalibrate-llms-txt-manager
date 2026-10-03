@@ -56,7 +56,7 @@ class GitHub_Updater {
 	 * @param string $repo_owner GitHub owner/organization.
 	 * @param string $repo_name  GitHub repository slug.
 	 */
-	public function __construct( string $repo_owner = 'wpcalibrate', string $repo_name = 'wpcalibrate-llms-txt-manager' ) {
+	public function __construct( string $repo_owner = 'zeeshanraza-official', string $repo_name = 'wpcalibrate-llms-txt-manager' ) {
 		$this->repo_owner = $repo_owner;
 		$this->repo_name  = $repo_name;
 

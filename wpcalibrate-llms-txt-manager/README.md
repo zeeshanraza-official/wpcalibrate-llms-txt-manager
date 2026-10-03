@@ -136,7 +136,7 @@ wpcalibrate-llms-txt-manager/
 
 ### Installation
 
-1. Download the latest `wpcalibrate-llms-txt-manager.zip` from [Releases](https://github.com/wpcalibrate/wpcalibrate-llms-txt-manager/releases).
+1. Download the latest `wpcalibrate-llms-txt-manager.zip` from [Releases](https://github.com/zeeshanraza-official/wpcalibrate-llms-txt-manager/releases).
 2. In your WordPress dashboard, navigate to **Plugins > Add New Plugin > Upload Plugin**.
 3. Select the `.zip` file and click **Install Now**, then **Activate Plugin**.
 4. Access the management console from the WordPress sidebar under **WPCalibrate > LLMs.txt Manager**.
@@ -215,7 +215,7 @@ Whenever a new version tag (e.g. `v1.0.1`) is released on GitHub with an attache
 
 If you discover a security vulnerability, please submit a report privately via GitHub Security Advisories or contact the development team at [support@wpcalibrate.com](mailto:support@wpcalibrate.com).
 
-Pull requests, feature requests, and issue reports are welcome on [GitHub](https://github.com/wpcalibrate/wpcalibrate-llms-txt-manager).
+Pull requests, feature requests, and issue reports are welcome on [GitHub](https://github.com/zeeshanraza-official/wpcalibrate-llms-txt-manager).
 
 ---
 

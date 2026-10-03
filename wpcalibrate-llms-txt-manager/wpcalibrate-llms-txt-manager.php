@@ -12,7 +12,7 @@
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       wpcalibrate-llms-txt-manager
  * Domain Path:       /languages
- * Update URI:        https://github.com/wpcalibrate/wpcalibrate-llms-txt-manager
+ * Update URI:        https://github.com/zeeshanraza-official/wpcalibrate-llms-txt-manager
  *
  * @package WPCalibrate\LlmsTxtManager
  */
