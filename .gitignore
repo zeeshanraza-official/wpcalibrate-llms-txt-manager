@@ -20,7 +20,7 @@ scripts/find*
 .cursor/
 .claude/
 
-# Build artifacts & packages
-/wpcalibrate-llms-txt-manager/
+# Build archives
 *.zip
+
 
